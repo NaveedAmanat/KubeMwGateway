@@ -1,0 +1,146 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" ng-click="vm.toggleNavbar()" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
+                <img alt="logo" class="logo-img" src="content/images/logo-jhipster.png"/>
+                <span>Kashafgateway</span> <span class="navbar-version">v{{VERSION}}</span>
+            </a>
+        </div>
+        <div class="navbar-collapse" ng-switch="vm.isAuthenticated()" uib-collapse="vm.isNavbarCollapsed">
+            <ul class="nav navbar-nav navbar-right">
+                <li ui-sref-active="active">
+                    <a ng-click="vm.collapseNavbar()" ui-sref="home">
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="hidden-sm">Home</span>
+                    </a>
+                </li>
+                <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+                <li class="dropdown pointer" ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true"
+                    uib-dropdown>
+                    <a class="dropdown-toggle" href="" id="entity-menu" uib-dropdown-toggle>
+                        <span>
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <span class="hidden-sm">
+                                Entities
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    </ul>
+                </li>
+                <li class="dropdown pointer" ng-class="{active: vm.$state.includes('account')}" uib-dropdown>
+                    <a class="dropdown-toggle" href="" id="account-menu" uib-dropdown-toggle>
+                        <span>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-sm">
+                                Account
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li ng-switch-when="true" ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="settings">
+                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li ng-switch-when="true" ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="password">
+                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
+                                <span>Password</span>
+                            </a>
+                        </li>
+                        <li ng-switch-when="true" ui-sref-active="active">
+                            <a href="" id="logout" ng-click="vm.logout()">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;
+                                <span>Sign out</span>
+                            </a>
+                        </li>
+                        <li ng-switch-when="false" ui-sref-active="active">
+                            <a href="" id="login" ng-click="vm.login()">
+                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
+                                <span>Sign in</span>
+                            </a>
+                        </li>
+                        <li ng-switch-when="false" ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="register">
+                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                                <span>Register</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown pointer" has-authority="ROLE_ADMIN" ng-class="{active: vm.$state.includes('admin')}"
+                    ng-switch-when="true" uib-dropdown>
+                    <a class="dropdown-toggle" href="" id="admin-menu" uib-dropdown-toggle>
+                        <span>
+                            <span class="glyphicon glyphicon-tower"></span>
+                            <span class="hidden-sm">Administration</span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="gateway">
+                                <span class="glyphicon glyphicon-road"></span>&nbsp;
+                                <span>Gateway</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="user-management">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                <span>User management</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="jhi-metrics">
+                                <span class="glyphicon glyphicon-dashboard"></span>&nbsp;
+                                <span>Metrics</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="jhi-health">
+                                <span class="glyphicon glyphicon-heart"></span>&nbsp;
+                                <span>Health</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="jhi-configuration">
+                                <span class="glyphicon glyphicon-list-alt"></span>&nbsp;
+                                <span>Configuration</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="audits">
+                                <span class="glyphicon glyphicon-bell"></span>&nbsp;
+                                <span>Audits</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="logs">
+                                <span class="glyphicon glyphicon-tasks"></span>&nbsp;
+                                <span>Logs</span>
+                            </a>
+                        </li>
+                        <li ng-show="vm.swaggerEnabled" ui-sref-active="active">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="docs">
+                                <span class="glyphicon glyphicon-book"></span>&nbsp;
+                                <span>API</span>
+                            </a>
+                        </li>
+                        <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
